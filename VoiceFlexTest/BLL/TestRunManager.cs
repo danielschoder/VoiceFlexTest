@@ -33,7 +33,9 @@ public class TestRunManager : ITestRunManager
         {
             testRunReport.NumberOfTestsPerformed++;
             var result = await _voiceFlexService.ListPhoneNumbersAsync();
-            if (result.Count == 2)
+            if (result.Count == 2
+                && result[0].Number.Equals("07876839785")
+                && result[1].Number.Equals("12345678901"))
             {
                 testRunReport.NumberOfTestsPassed++;
             }
