@@ -1,5 +1,5 @@
 ﻿@VoiceFlexTest_HostAddress = https://localhost:7093
 
-GET {{VoiceFlexTest_HostAddress}}/weatherforecast
+POST {{VoiceFlexTest_HostAddress}}/api/testruns
 
 ###
