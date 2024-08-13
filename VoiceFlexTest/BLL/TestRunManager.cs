@@ -23,7 +23,7 @@ public class TestRunManager : ITestRunManager
         try
         {
             testRunReport.NumberOfTestsPerformed++;
-            var result = await _voiceFlexService.GetServiceAliveAsync();
+            testRunReport.VoiceFlexVersion = (await _voiceFlexService.GetServiceAliveAsync()).Version;
             testRunReport.NumberOfTestsPassed++;
         }
         catch { }
