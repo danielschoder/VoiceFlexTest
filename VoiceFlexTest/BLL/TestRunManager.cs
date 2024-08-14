@@ -28,14 +28,14 @@ public class TestRunManager : ITestRunManager
         }
         catch { }
 
-        // Scenario 2: /api/phonenumbers should return 2 phone numbers
+        // Scenario 2: /api/accounts/36b5b29e-7984-4274-87bb-91ff2fc72c69/phonenumbers should return this account's 2 phone numbers
         try
         {
             testRunReport.NumberOfTestsPerformed++;
-            var result = await _voiceFlexService.ListPhoneNumbersAsync();
-            if (result.Count == 2
-                && result[0].Number.Equals("07876839785")
-                && result[1].Number.Equals("12345678901"))
+            var result = await _voiceFlexService.GetAccountWithPhoneNumbersAsync(new Guid("36b5b29e-7984-4274-87bb-91ff2fc72c69"));
+            if (result.PhoneNumbers.Count == 2
+                && result.PhoneNumbers[0].Number.Equals("07479839699")
+                && result.PhoneNumbers[1].Number.Equals("07876839785"))
             {
                 testRunReport.NumberOfTestsPassed++;
             }

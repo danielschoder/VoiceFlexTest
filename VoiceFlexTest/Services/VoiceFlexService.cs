@@ -5,7 +5,7 @@ namespace VoiceFlexTest.Services;
 public interface IVoiceFlexService
 {
     Task<ServiceAlive> GetServiceAliveAsync();
-    Task<List<PhoneNumber>> ListPhoneNumbersAsync();
+    Task<Account> GetAccountWithPhoneNumbersAsync(Guid id);
 }
 
 public class VoiceFlexService : IVoiceFlexService
@@ -17,6 +17,6 @@ public class VoiceFlexService : IVoiceFlexService
     public async Task<ServiceAlive> GetServiceAliveAsync()
         => await _httpClient.GetFromJsonAsync<ServiceAlive>("/api");
 
-    public async Task<List<PhoneNumber>> ListPhoneNumbersAsync()
-        => await _httpClient.GetFromJsonAsync<List<PhoneNumber>>("/api/phonenumbers");
+    public async Task<Account> GetAccountWithPhoneNumbersAsync(Guid id)
+        => await _httpClient.GetFromJsonAsync<Account>($"/api/accounts/{id}/phonenumbers");
 }
